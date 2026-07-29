@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All - 9EXO</title>
+    <meta name="description" content="Shop the full 9EXO collection: cotton pants, jeans, baggy pants, 6-pocket pants and essential tees for men.">
+    <link rel="canonical" href="https://9exo.com/products.html">
+    <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0b0a09">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="section container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Shop</span>
+    </nav>
+
+    <div class="section-head">
+        <div>
+            <span class="eyebrow">Full Collection</span>
+            <h1 style="margin-bottom:0;">Shop All</h1>
+        </div>
+        <button class="btn btn-outline btn-sm" id="mobile-filter-toggle" style="display:none;">Filters</button>
+    </div>
+
+    <div class="shop-layout">
+        <aside class="filters" id="filters">
+            <div class="mobile-drawer-header" style="display:none;">
+                <strong>Filters</strong>
+                <button class="btn-icon" id="mobile-filter-close" aria-label="Close filters"></button>
+            </div>
+        </aside>
+
+        <div>
+            <div class="shop-toolbar">
+                <span id="result-count" class="text-muted" style="font-size:0.88rem;"></span>
+                <div class="shop-toolbar-actions">
+                    <input type="text" id="shop-search-input" class="shop-search-input" placeholder="Search in shop...">
+                    <select id="sort-select" aria-label="Sort products">
+                        <option value="featured">Featured</option>
+                        <option value="newest">Newest</option>
+                        <option value="price-asc">Price: Low to High</option>
+                        <option value="price-desc">Price: High to Low</option>
+                        <option value="rating">Top Rated</option>
+                    </select>
+                </div>
+            </div>
+            <div class="active-filters" id="active-filters"></div>
+            <div class="product-grid" id="shop-grid"></div>
+        </div>
+    </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/partials.js"></script>
+<script src="/assets/js/main.js"></script>
+<script src="/assets/js/products.js"></script>
+<script>
+    document.getElementById('mobile-filter-close').innerHTML = window.ICONS.close;
+    document.querySelector('.mobile-drawer-header').style.display = 'flex';
+</script>
+<style>
+    @media (max-width: 860px) {
+        #mobile-filter-toggle { display: inline-flex !important; }
+        .mobile-drawer-header {
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid var(--color-line);
+        }
+    }
+</style>
+</body>
+</html>

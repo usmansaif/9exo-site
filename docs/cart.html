@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - 9EXO</title>
+    <meta name="description" content="Review the items in your 9EXO shopping cart.">
+    <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0b0a09">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="section container">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span><span>Cart</span>
+    </nav>
+    <h1 style="margin-bottom: var(--space-lg);">Shopping Cart</h1>
+
+    <div class="empty-cart" id="empty-cart-msg" style="display:none;">
+        <svg class="icon" viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
+        <h2 style="margin-bottom: var(--space-sm);">Your cart is empty</h2>
+        <p style="margin-bottom: var(--space-lg); color: var(--color-grey-600);">Looks like you have not added anything to your cart yet.</p>
+        <a href="/products.html" class="btn btn-primary">Continue Shopping</a>
+    </div>
+
+    <div class="cart-layout" id="cart-content">
+        <div>
+            <div id="cart-rows"></div>
+        </div>
+
+        <div class="summary-card">
+            <h3 style="margin-bottom: var(--space-lg);">Order Summary</h3>
+            <div class="summary-row"><span>Subtotal</span><span id="cart-subtotal">Rs. 0</span></div>
+            <p style="font-size: 0.82rem; color: var(--color-grey-600); margin-bottom: var(--space-lg);">
+                Delivery charges are calculated at checkout. Free delivery on orders over <span id="free-threshold"></span>.
+            </p>
+            <a href="/checkout.html" class="btn btn-primary btn-block">Proceed to Checkout</a>
+            <a href="/products.html" class="btn-ghost" style="display:block; text-align:center; margin-top: var(--space-sm);">Continue Shopping</a>
+        </div>
+    </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/partials.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    document.getElementById('free-threshold').textContent = window.formatPrice(window.CONFIG.delivery.freeThreshold);
+
+    function renderCartPage() {
+        const cart = window.app.cart;
+        const rowsEl = document.getElementById('cart-rows');
+        const emptyMsg = document.getElementById('empty-cart-msg');
+        const cartContent = document.getElementById('cart-content');
+
+        if (cart.length === 0) {
+            emptyMsg.style.display = 'block';
+            cartContent.style.display = 'none';
+            return;
+        }
+
+        emptyMsg.style.display = 'none';
+        cartContent.style.display = 'grid';
+
+        let subtotal = 0;
+        rowsEl.innerHTML = cart.map((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            subtotal += itemTotal;
+            const variant = [item.size ? `Size: ${item.size}` : '', item.color ? `Color: ${item.color}` : ''].filter(Boolean).join(' · ');
+            return `
+            <div class="cart-row">
+                <div class="cart-row-media"><img src="${item.image || '/assets/images/product-placeholder.jpg'}" alt="${item.title}"></div>
+                <div class="cart-row-meta">
+                    <a href="/product.html?id=${item.id}" class="title">${item.title}</a>
+                    ${variant ? `<span class="variant">${variant}</span>` : ''}
+                    <span class="variant">${window.formatPrice(item.price)} each</span>
+                    <button class="remove-btn" data-remove-index="${index}">Remove</button>
+                </div>
+                <div class="qty-stepper cart-row-qty">
+                    <button type="button" data-qty-minus="${index}" aria-label="Decrease quantity">${window.ICONS.minus}</button>
+                    <input type="number" value="${item.quantity}" readonly>
+                    <button type="button" data-qty-plus="${index}" aria-label="Increase quantity">${window.ICONS.plus}</button>
+                </div>
+                <div class="cart-row-total">${window.formatPrice(itemTotal)}</div>
+            </div>`;
+        }).join('');
+
+        document.getElementById('cart-subtotal').textContent = window.formatPrice(subtotal);
+
+        rowsEl.querySelectorAll('[data-remove-index]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                window.app.removeFromCart(parseInt(btn.dataset.removeIndex));
+                renderCartPage();
+            });
+        });
+        rowsEl.querySelectorAll('[data-qty-minus]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const i = parseInt(btn.dataset.qtyMinus);
+                window.app.updateQuantity(i, window.app.cart[i].quantity - 1);
+                renderCartPage();
+            });
+        });
+        rowsEl.querySelectorAll('[data-qty-plus]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const i = parseInt(btn.dataset.qtyPlus);
+                window.app.updateQuantity(i, window.app.cart[i].quantity + 1);
+                renderCartPage();
+            });
+        });
+    }
+
+    window.addEventListener('cartUpdated', renderCartPage);
+    document.addEventListener('DOMContentLoaded', renderCartPage);
+</script>
+</body>
+</html>

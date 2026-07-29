@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - 9EXO</title>
+    <meta name="description" content="Check the status of your 9EXO order or request a tracking update over WhatsApp.">
+    <link rel="canonical" href="https://9exo.com/track-order.html">
+    <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0b0a09">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="section container-narrow">
+    <div class="page-header" style="padding-top:0;">
+        <span class="eyebrow">Order Status</span>
+        <h1>Track Your Order</h1>
+        <p style="color: var(--color-grey-600);">Enter your order reference below to request a status update on WhatsApp.</p>
+    </div>
+
+    <form id="track-form" style="max-width: 420px; margin: 0 auto var(--space-xl);">
+        <div class="form-group">
+            <label for="t-order-id">Order Reference *</label>
+            <input type="text" id="t-order-id" placeholder="e.g. EXO12345678" required>
+        </div>
+        <div class="form-group">
+            <label for="t-phone">Phone Number Used at Checkout *</label>
+            <input type="tel" id="t-phone" required>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Request Update on WhatsApp</button>
+    </form>
+
+    <div class="prose">
+        <h2 style="text-align:center;">How Your Order Moves</h2>
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-md); text-align:center; margin: var(--space-lg) 0;">
+            <div>
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--color-ink);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:var(--font-display);font-weight:600;">1</div>
+                <strong style="font-size:0.85rem;">Order Placed</strong>
+            </div>
+            <div>
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--color-ink);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:var(--font-display);font-weight:600;">2</div>
+                <strong style="font-size:0.85rem;">Confirmed</strong>
+            </div>
+            <div>
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--color-ink);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:var(--font-display);font-weight:600;">3</div>
+                <strong style="font-size:0.85rem;">Dispatched</strong>
+            </div>
+            <div>
+                <div style="width:40px;height:40px;border-radius:50%;background:var(--color-ink);color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;font-family:var(--font-display);font-weight:600;">4</div>
+                <strong style="font-size:0.85rem;">Delivered</strong>
+            </div>
+        </div>
+        <p style="text-align:center;">Once your order is dispatched, we send the courier's tracking link directly to your WhatsApp. If it has been more than 6 business days since dispatch and you have not received an update, please reach out.</p>
+    </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/partials.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    document.getElementById('track-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const orderId = document.getElementById('t-order-id').value;
+        const phone = document.getElementById('t-phone').value;
+        const text = `Order Tracking Request\n\nOrder Reference: ${orderId}\nPhone Used at Checkout: ${phone}\n\nCould you please share a status update on this order?`;
+        const targetWhatsapp = window.CONFIG.contact.whatsapp.replace(/[^0-9]/g, '');
+        window.open(`https://wa.me/${targetWhatsapp}?text=${encodeURIComponent(text)}`, '_blank');
+    });
+</script>
+</body>
+</html>

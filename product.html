@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product - 9EXO</title>
+    <meta name="description" content="Shop premium men's fashion at 9EXO.">
+    <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0b0a09">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="section container" id="product-main" style="display: none;">
+    <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <a href="/">Home</a><span>/</span>
+        <a href="/products.html">Shop</a><span>/</span>
+        <span id="p-breadcrumb"></span>
+    </nav>
+
+    <div class="product-detail">
+        <div class="product-gallery">
+            <div class="gallery-main">
+                <img id="gallery-main-img" src="" alt="">
+            </div>
+            <div class="gallery-thumbs" id="gallery-thumbs"></div>
+        </div>
+
+        <div class="product-info">
+            <div class="product-category" id="p-category"></div>
+            <h1 id="p-title"></h1>
+
+            <div class="rating" id="p-rating" style="margin-bottom: var(--space-sm);"></div>
+
+            <div class="product-price" id="p-price-container"></div>
+
+            <div class="stock-status" id="p-stock-status"><span class="dot"></span><span id="p-stock-text"></span></div>
+
+            <p style="margin-bottom: var(--space-lg); color: var(--color-grey-600);" id="p-short-desc"></p>
+
+            <div class="selector-group" id="size-group" style="display: none;">
+                <div class="selector-label">
+                    <span>Size</span>
+                    <a href="/size-chart.html" class="btn-ghost" style="padding:0;">Size Chart</a>
+                </div>
+                <div class="options-container" id="size-options"></div>
+            </div>
+
+            <div class="selector-group" id="color-group" style="display: none;">
+                <label class="selector-label"><span>Color</span></label>
+                <div class="options-container" id="color-options"></div>
+            </div>
+
+            <div class="selector-group">
+                <label class="selector-label"><span>Quantity</span></label>
+                <div class="qty-stepper">
+                    <button type="button" id="qty-minus" aria-label="Decrease quantity"></button>
+                    <input type="number" id="qty" value="1" min="1">
+                    <button type="button" id="qty-plus" aria-label="Increase quantity"></button>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn btn-outline" id="add-to-cart-btn">Add to Cart</button>
+                <button class="btn btn-primary" id="buy-now-btn">Buy Now</button>
+            </div>
+
+            <p class="whatsapp-note">
+                <svg class="icon" viewBox="0 0 24 24" style="width:16px;height:16px; color:#25D366;" fill="none"><circle cx="12" cy="12" r="9"></circle></svg>
+                Need help deciding? <a href="#" id="whatsapp-ask" style="text-decoration: underline;">Ask us on WhatsApp</a>
+            </p>
+
+            <div class="accordion">
+                <div class="accordion-item open">
+                    <button class="accordion-trigger">Description<span></span></button>
+                    <div class="accordion-panel"><div class="accordion-panel-inner" id="p-desc"></div></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">Material &amp; Fit<span></span></button>
+                    <div class="accordion-panel"><div class="accordion-panel-inner" id="p-material"></div></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">Care Instructions<span></span></button>
+                    <div class="accordion-panel"><div class="accordion-panel-inner" id="p-care"></div></div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-trigger">Shipping &amp; Returns<span></span></button>
+                    <div class="accordion-panel"><div class="accordion-panel-inner">Delivered in 3 to 6 business days nationwide. 7-day exchange window from the date of delivery. See our <a href="/delivery-terms.html" style="text-decoration:underline;">delivery terms</a> and <a href="/refund-exchange.html" style="text-decoration:underline;">refund &amp; exchange policy</a>.</div></div>
+                </div>
+            </div>
+
+            <div class="trust-strip">
+                <div class="trust-item">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="1" y="6" width="14" height="11"></rect><path d="M15 10h4l3 3v4h-7z"></path><circle cx="6" cy="19" r="2"></circle><circle cx="17.5" cy="19" r="2"></circle></svg>
+                    Nationwide Delivery
+                </div>
+                <div class="trust-item">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.4-6.4L21 8"></path><polyline points="21 3 21 8 16 8"></polyline><path d="M21 12a9 9 0 0 1-15.4 6.4L3 16"></path><polyline points="3 21 3 16 8 16"></polyline></svg>
+                    7-Day Exchange
+                </div>
+                <div class="trust-item">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V5l8-3z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+                    Cash on Delivery
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<div class="container" id="loading" style="text-align: center; padding: 140px 0; color: var(--color-grey-600);">Loading product...</div>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/partials.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    document.querySelectorAll('.accordion-trigger span').forEach(s => s.innerHTML = window.ICONS.plus);
+    document.getElementById('qty-minus').innerHTML = window.ICONS.minus;
+    document.getElementById('qty-plus').innerHTML = window.ICONS.plus;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const productId = urlParams.get('id');
+
+        if (!productId) {
+            window.location.href = '/products.html';
+            return;
+        }
+
+        let selectedSize = null;
+        let selectedColor = null;
+        let currentProduct = null;
+
+        fetch('/assets/data/products.json')
+            .then(res => res.json())
+            .then(products => {
+                currentProduct = products.find(p => p.id === productId);
+
+                if (!currentProduct) {
+                    document.getElementById('loading').textContent = 'Product not found.';
+                    return;
+                }
+
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('product-main').style.display = 'block';
+
+                document.title = `${currentProduct.title} - ${window.CONFIG.brandName}`;
+                document.getElementById('p-category').textContent = currentProduct.category;
+                document.getElementById('p-breadcrumb').textContent = currentProduct.title;
+                document.getElementById('p-title').textContent = currentProduct.title;
+                document.getElementById('p-short-desc').textContent = currentProduct.short_description;
+                document.getElementById('p-desc').textContent = currentProduct.description;
+                document.getElementById('p-material').innerHTML = `Material: ${currentProduct.material}<br>Fit: ${currentProduct.fit}`;
+                document.getElementById('p-care').textContent = currentProduct.care;
+
+                // Rating
+                let starsHTML = '';
+                for (let i = 0; i < 5; i++) starsHTML += window.ICONS.star;
+                document.getElementById('p-rating').innerHTML = `<span class="stars">${starsHTML}</span> ${currentProduct.rating} (${currentProduct.reviews} reviews)`;
+
+                // Price
+                document.getElementById('p-price-container').innerHTML = window.priceHTML(currentProduct);
+
+                // Stock
+                const stockStatus = document.getElementById('p-stock-status');
+                const stockText = document.getElementById('p-stock-text');
+                if (currentProduct.stock > 10) {
+                    stockText.textContent = 'In Stock';
+                } else if (currentProduct.stock > 0) {
+                    stockStatus.classList.add('low');
+                    stockText.textContent = `Only ${currentProduct.stock} left in stock`;
+                } else {
+                    stockStatus.classList.add('low');
+                    stockText.textContent = 'Out of Stock';
+                }
+
+                // Gallery
+                const mainImg = document.getElementById('gallery-main-img');
+                mainImg.src = currentProduct.images[0];
+                mainImg.alt = currentProduct.title;
+                const thumbs = document.getElementById('gallery-thumbs');
+                thumbs.innerHTML = currentProduct.images.map((src, i) => `
+                    <button class="gallery-thumb${i === 0 ? ' active' : ''}" data-src="${src}" aria-label="View image ${i + 1}">
+                        <img src="${src}" alt="${currentProduct.title} view ${i + 1}">
+                    </button>
+                `).join('');
+                thumbs.querySelectorAll('.gallery-thumb').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        mainImg.src = btn.dataset.src;
+                        thumbs.querySelectorAll('.gallery-thumb').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                    });
+                });
+
+                // Sizes
+                if (currentProduct.sizes && currentProduct.sizes.length > 0) {
+                    document.getElementById('size-group').style.display = 'block';
+                    const sizeOptions = document.getElementById('size-options');
+                    currentProduct.sizes.forEach((size, index) => {
+                        const btn = document.createElement('button');
+                        btn.className = 'option-btn' + (index === 0 ? ' selected' : '');
+                        btn.textContent = size;
+                        if (index === 0) selectedSize = size;
+
+                        btn.onclick = () => {
+                            Array.from(sizeOptions.children).forEach(c => c.classList.remove('selected'));
+                            btn.classList.add('selected');
+                            selectedSize = size;
+                        };
+                        sizeOptions.appendChild(btn);
+                    });
+                }
+
+                // Colors
+                if (currentProduct.colors && currentProduct.colors.length > 0) {
+                    document.getElementById('color-group').style.display = 'block';
+                    const colorOptions = document.getElementById('color-options');
+                    currentProduct.colors.forEach((color, index) => {
+                        const btn = document.createElement('button');
+                        btn.className = 'option-btn' + (index === 0 ? ' selected' : '');
+                        btn.textContent = color;
+                        if (index === 0) selectedColor = color;
+
+                        btn.onclick = () => {
+                            Array.from(colorOptions.children).forEach(c => c.classList.remove('selected'));
+                            btn.classList.add('selected');
+                            selectedColor = color;
+                        };
+                        colorOptions.appendChild(btn);
+                    });
+                }
+
+                document.getElementById('whatsapp-ask').href = `https://wa.me/${window.CONFIG.contact.whatsapp.replace(/[^0-9]/g, '')}?text=${encodeURIComponent('Hi, I have a question about ' + currentProduct.title)}`;
+            });
+
+        // Accordion
+        window.initAccordions();
+
+        // Quantity stepper
+        document.getElementById('qty-minus').addEventListener('click', () => {
+            const input = document.getElementById('qty');
+            input.value = Math.max(1, parseInt(input.value) - 1);
+        });
+        document.getElementById('qty-plus').addEventListener('click', () => {
+            const input = document.getElementById('qty');
+            input.value = parseInt(input.value) + 1;
+        });
+
+        // Actions
+        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+            const qty = parseInt(document.getElementById('qty').value);
+            window.app.addToCart(currentProduct, qty, selectedSize, selectedColor);
+        });
+
+        document.getElementById('buy-now-btn').addEventListener('click', () => {
+            const qty = parseInt(document.getElementById('qty').value);
+            window.app.addToCart(currentProduct, qty, selectedSize, selectedColor);
+            window.location.href = '/checkout.html';
+        });
+    });
+</script>
+</body>
+</html>

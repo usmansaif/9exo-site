@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Received - 9EXO</title>
+    <meta name="robots" content="noindex">
+    <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#0b0a09">
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main class="container confirm-page">
+    <div class="confirm-icon">
+        <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><polyline points="8 12 11 15 16 9"></polyline></svg>
+    </div>
+    <h1>Order Sent</h1>
+    <p style="color: var(--color-grey-600); margin: var(--space-sm) 0 var(--space-lg);" id="confirm-order-id">
+        We have opened WhatsApp with your order details. Please send the message to confirm your order with our team.
+    </p>
+    <div style="display:flex; gap: var(--space-sm); justify-content:center; flex-wrap:wrap;">
+        <a href="/products.html" class="btn btn-primary">Continue Shopping</a>
+        <a href="/track-order.html" class="btn btn-outline">Track an Order</a>
+    </div>
+</main>
+
+<div id="site-footer"></div>
+
+<script src="/assets/js/config.js"></script>
+<script src="/assets/js/icons.js"></script>
+<script src="/assets/js/partials.js"></script>
+<script src="/assets/js/main.js"></script>
+<script>
+    const orderId = sessionStorage.getItem('9exo_last_order');
+    if (orderId) {
+        document.getElementById('confirm-order-id').innerHTML =
+            `Order reference <strong>#${orderId}</strong>. We have opened WhatsApp with your order details, please send the message to confirm with our team.`;
+    }
+</script>
+</body>
+</html>
