@@ -4,12 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product - 9EXO</title>
-    <meta name="description" content="Shop premium men's fashion at 9EXO.">
+    <meta name="description" content="Shop premium men&#x27;s fashion at 9EXO.">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    <link rel="canonical" href="https://9exo.com/product/">
+
+    <meta name="author" content="9EXO">
+    <meta name="theme-color" content="#f7f5f1" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#0b0a09" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16.png">
     <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
     <link rel="manifest" href="/manifest.json">
-    <meta name="theme-color" content="#0b0a09">
+
+    <meta property="og:site_name" content="9EXO">
+    <meta property="og:locale" content="en_PK">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="Product - 9EXO">
+    <meta property="og:description" content="Shop premium men&#x27;s fashion at 9EXO.">
+    <meta property="og:url" content="https://9exo.com/product/">
+    <meta property="og:image" content="https://9exo.com/assets/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="9EXO - premium men&#x27;s fashion">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Product - 9EXO">
+    <meta name="twitter:description" content="Shop premium men&#x27;s fashion at 9EXO.">
+    <meta name="twitter:image" content="https://9exo.com/assets/images/og-image.jpg">
+    <meta name="twitter:image:alt" content="9EXO - premium men&#x27;s fashion">
+
+
+
     <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ClothingStore",
+          "@id": "https://9exo.com/#organization",
+          "name": "9EXO",
+          "url": "https://9exo.com/",
+          "logo": "https://9exo.com/assets/images/black-logo.png",
+          "image": "https://9exo.com/assets/images/og-image.jpg",
+          "description": "Premium men's streetwear label offering cotton pants, denim, baggy and 6-pocket pants, and essential tees.",
+          "telephone": "+92 310 7620999",
+          "email": "9exo.clothing@gmail.com",
+          "priceRange": "Rs. 1500 - Rs. 6000",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "123 Fashion Avenue",
+            "addressLocality": "Lahore",
+            "addressRegion": "Punjab",
+            "addressCountry": "PK"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+              ],
+              "opens": "10:00",
+              "closes": "20:00"
+            }
+          ],
+          "sameAs": [
+            "https://instagram.com/9exo",
+            "https://facebook.com/9exo",
+            "https://tiktok.com/@9exo"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://9exo.com/#website",
+          "url": "https://9exo.com/",
+          "name": "9EXO",
+          "description": "Premium men's streetwear label offering cotton pants, denim, baggy and 6-pocket pants, and essential tees.",
+          "publisher": {
+            "@id": "https://9exo.com/#organization"
+          },
+          "inLanguage": "en"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://9exo.com/product/#webpage",
+          "url": "https://9exo.com/product/",
+          "name": "Product - 9EXO",
+          "description": "Shop premium men's fashion at 9EXO.",
+          "isPartOf": {
+            "@id": "https://9exo.com/#website"
+          },
+          "about": {
+            "@id": "https://9exo.com/#organization"
+          },
+          "inLanguage": "en",
+          "breadcrumb": {
+            "@id": "https://9exo.com/product/#breadcrumb"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://9exo.com/product/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://9exo.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Product",
+              "item": "https://9exo.com/product/"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
 
@@ -135,6 +255,98 @@
 
         let selectedSize = null;
         let selectedColor = null;
+        const SITE = 'https://9exo.com';
+
+        function setMeta(attr, key, value) {
+            let el = document.head.querySelector(`meta[${attr}="${key}"]`);
+            if (!el) {
+                el = document.createElement('meta');
+                el.setAttribute(attr, key);
+                document.head.appendChild(el);
+            }
+            el.setAttribute('content', value);
+        }
+
+        /**
+         * The product page is one document serving every product via ?id=,
+         * so its title, canonical, social cards and Product schema have to be
+         * rewritten per product once the JSON has loaded.
+         */
+        function applyProductSEO(p) {
+            const url = `${SITE}/product/?id=${p.id}`;
+            const title = `${p.title} - 9EXO`;
+            const desc = p.short_description || p.description;
+            const image = p.images && p.images[0]
+                ? (p.images[0].startsWith('http') ? p.images[0] : SITE + p.images[0])
+                : `${SITE}/assets/images/og-image.jpg`;
+
+            document.title = title;
+            setMeta('name', 'description', desc);
+            setMeta('property', 'og:title', title);
+            setMeta('property', 'og:description', desc);
+            setMeta('property', 'og:url', url);
+            setMeta('property', 'og:image', image);
+            setMeta('property', 'og:type', 'product');
+            setMeta('name', 'twitter:title', title);
+            setMeta('name', 'twitter:description', desc);
+            setMeta('name', 'twitter:image', image);
+
+            let link = document.head.querySelector('link[rel="canonical"]');
+            if (!link) {
+                link = document.createElement('link');
+                link.rel = 'canonical';
+                document.head.appendChild(link);
+            }
+            link.href = url;
+
+            const schema = {
+                '@context': 'https://schema.org',
+                '@type': 'Product',
+                '@id': url + '#product',
+                name: p.title,
+                description: p.description,
+                sku: p.sku,
+                image: (p.images || []).map(src => src.startsWith('http') ? src : SITE + src),
+                category: p.category,
+                brand: { '@type': 'Brand', name: '9EXO' },
+                offers: {
+                    '@type': 'Offer',
+                    url: url,
+                    price: p.price,
+                    priceCurrency: 'PKR',
+                    itemCondition: 'https://schema.org/NewCondition',
+                    availability: p.stock > 0
+                        ? 'https://schema.org/InStock'
+                        : 'https://schema.org/OutOfStock',
+                    seller: { '@id': SITE + '/#organization' }
+                }
+            };
+            if (p.colors && p.colors.length) schema.color = p.colors.join(', ');
+            if (p.material) schema.material = p.material;
+            if (p.rating && p.reviews) {
+                schema.aggregateRating = {
+                    '@type': 'AggregateRating',
+                    ratingValue: p.rating,
+                    reviewCount: p.reviews
+                };
+            }
+
+            const breadcrumb = {
+                '@context': 'https://schema.org',
+                '@type': 'BreadcrumbList',
+                itemListElement: [
+                    { '@type': 'ListItem', position: 1, name: 'Home', item: SITE + '/' },
+                    { '@type': 'ListItem', position: 2, name: 'Shop All', item: SITE + '/products/' },
+                    { '@type': 'ListItem', position: 3, name: p.title, item: url }
+                ]
+            };
+
+            const tag = document.createElement('script');
+            tag.type = 'application/ld+json';
+            tag.textContent = JSON.stringify([schema, breadcrumb]);
+            document.head.appendChild(tag);
+        }
+
         let currentProduct = null;
 
         fetch('/assets/data/products.json')
@@ -144,13 +356,14 @@
 
                 if (!currentProduct) {
                     document.getElementById('loading').textContent = 'Product not found.';
+                    setMeta('name', 'robots', 'noindex, follow');
                     return;
                 }
 
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('product-main').style.display = 'block';
 
-                document.title = `${currentProduct.title} - ${window.CONFIG.brandName}`;
+                applyProductSEO(currentProduct);
                 document.getElementById('p-category').textContent = currentProduct.category;
                 document.getElementById('p-breadcrumb').textContent = currentProduct.title;
                 document.getElementById('p-title').textContent = currentProduct.title;
