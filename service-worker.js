@@ -1,4 +1,4 @@
-const CACHE_NAME = '9exo-cache-v2';
+const CACHE_NAME = '9exo-cache-v3';
 const PRECACHE_URLS = [
     '/',
     '/products/',
@@ -37,6 +37,10 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') return;
 
+    // Let cross-origin requests (WhatsApp, social links) go straight to the
+    // network rather than through the cache.
+    if (new URL(event.request.url).origin !== self.location.origin) return;
+
     event.respondWith(
         caches.match(event.request).then((cached) => {
             const network = fetch(event.request)
@@ -47,8 +51,26 @@ self.addEventListener('fetch', (event) => {
                     }
                     return response;
                 })
-                .catch(() => cached);
+                .catch(() => {
+                    // Only '/' and '/products/' are precached, so most routes
+                    // reach here with nothing cached. respondWith() rejects on
+                    // undefined, so always resolve to a real Response: the
+                    // cached copy, else the shell, else a plain 503.
+                    if (cached) return cached;
+                    if (event.request.mode === 'navigate') {
+                        return caches.match('/').then((shell) => shell || offlineResponse());
+                    }
+                    return offlineResponse();
+                });
             return cached || network;
         })
     );
 });
+
+function offlineResponse() {
+    return new Response('You are offline.', {
+        status: 503,
+        statusText: 'Offline',
+        headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+    });
+}
