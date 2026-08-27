@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkoutItemsContainer = document.getElementById('checkout-items');
 
     if (!cartItems || cartItems.length === 0) {
-        window.location.href = '/cart.html';
+        window.location.href = '/cart/';
         return;
     }
 
@@ -94,6 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('9exo_last_order', orderId);
         window.app.clearCart();
         window.open(whatsappUrl, '_blank');
-        window.location.href = '/order-confirmation.html';
+        window.location.href = '/order-confirmation/';
     });
 });

@@ -18,7 +18,7 @@
 <main class="section container" id="product-main" style="display: none;">
     <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="/">Home</a><span>/</span>
-        <a href="/products.html">Shop</a><span>/</span>
+        <a href="/products/">Shop</a><span>/</span>
         <span id="p-breadcrumb"></span>
     </nav>
 
@@ -45,7 +45,7 @@
             <div class="selector-group" id="size-group" style="display: none;">
                 <div class="selector-label">
                     <span>Size</span>
-                    <a href="/size-chart.html" class="btn-ghost" style="padding:0;">Size Chart</a>
+                    <a href="/size-chart/" class="btn-ghost" style="padding:0;">Size Chart</a>
                 </div>
                 <div class="options-container" id="size-options"></div>
             </div>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="accordion-item">
                     <button class="accordion-trigger">Shipping &amp; Returns<span></span></button>
-                    <div class="accordion-panel"><div class="accordion-panel-inner">Delivered in 3 to 6 business days nationwide. 7-day exchange window from the date of delivery. See our <a href="/delivery-terms.html" style="text-decoration:underline;">delivery terms</a> and <a href="/refund-exchange.html" style="text-decoration:underline;">refund &amp; exchange policy</a>.</div></div>
+                    <div class="accordion-panel"><div class="accordion-panel-inner">Delivered in 3 to 6 business days nationwide. 7-day exchange window from the date of delivery. See our <a href="/delivery-terms/" style="text-decoration:underline;">delivery terms</a> and <a href="/refund-exchange/" style="text-decoration:underline;">refund &amp; exchange policy</a>.</div></div>
                 </div>
             </div>
 
@@ -129,7 +129,7 @@
         const productId = urlParams.get('id');
 
         if (!productId) {
-            window.location.href = '/products.html';
+            window.location.href = '/products/';
             return;
         }
 
@@ -261,7 +261,7 @@
         document.getElementById('buy-now-btn').addEventListener('click', () => {
             const qty = parseInt(document.getElementById('qty').value);
             window.app.addToCart(currentProduct, qty, selectedSize, selectedColor);
-            window.location.href = '/checkout.html';
+            window.location.href = '/checkout/';
         });
     });
 </script>

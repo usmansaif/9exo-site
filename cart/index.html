@@ -25,7 +25,7 @@
         <svg class="icon" viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8V6a3 3 0 0 1 6 0v2"></path></svg>
         <h2 style="margin-bottom: var(--space-sm);">Your cart is empty</h2>
         <p style="margin-bottom: var(--space-lg); color: var(--color-grey-600);">Looks like you have not added anything to your cart yet.</p>
-        <a href="/products.html" class="btn btn-primary">Continue Shopping</a>
+        <a href="/products/" class="btn btn-primary">Continue Shopping</a>
     </div>
 
     <div class="cart-layout" id="cart-content">
@@ -39,8 +39,8 @@
             <p style="font-size: 0.82rem; color: var(--color-grey-600); margin-bottom: var(--space-lg);">
                 Delivery charges are calculated at checkout. Free delivery on orders over <span id="free-threshold"></span>.
             </p>
-            <a href="/checkout.html" class="btn btn-primary btn-block">Proceed to Checkout</a>
-            <a href="/products.html" class="btn-ghost" style="display:block; text-align:center; margin-top: var(--space-sm);">Continue Shopping</a>
+            <a href="/checkout/" class="btn btn-primary btn-block">Proceed to Checkout</a>
+            <a href="/products/" class="btn-ghost" style="display:block; text-align:center; margin-top: var(--space-sm);">Continue Shopping</a>
         </div>
     </div>
 </main>
@@ -78,7 +78,7 @@
             <div class="cart-row">
                 <div class="cart-row-media"><img src="${item.image || '/assets/images/product-placeholder.jpg'}" alt="${item.title}"></div>
                 <div class="cart-row-meta">
-                    <a href="/product.html?id=${item.id}" class="title">${item.title}</a>
+                    <a href="/product/?id=${item.id}" class="title">${item.title}</a>
                     ${variant ? `<span class="variant">${variant}</span>` : ''}
                     <span class="variant">${window.formatPrice(item.price)} each</span>
                     <button class="remove-btn" data-remove-index="${index}">Remove</button>

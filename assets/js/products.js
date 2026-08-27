@@ -1,7 +1,7 @@
 /**
  * Shared product card rendering + the shop listing page controller
  * (filtering, sorting, search). renderProductCard/renderSkeletonCards
- * are used by both index.html and products.html.
+ * are used by both the home page and the shop listing page.
  */
 
 window.renderProductCard = function (p) {
@@ -13,7 +13,7 @@ window.renderProductCard = function (p) {
 
     return `
     <div class="product-card" data-id="${p.id}">
-        <a href="/product.html?id=${p.id}" class="product-media">
+        <a href="/product/?id=${p.id}" class="product-media">
             <img src="${p.images[0]}" alt="${p.title}" loading="lazy" width="600" height="750">
             <div class="product-badges">${badges.join('')}</div>
         </a>
@@ -24,7 +24,7 @@ window.renderProductCard = function (p) {
             <button class="btn btn-primary btn-block btn-sm" data-quick-add="${p.id}">Add to Cart</button>
         </div>
         <div class="product-category">${p.category}</div>
-        <a href="/product.html?id=${p.id}" class="product-title">${p.title}</a>
+        <a href="/product/?id=${p.id}" class="product-title">${p.title}</a>
         <div class="product-price">${window.priceHTML(p)}</div>
     </div>`;
 };

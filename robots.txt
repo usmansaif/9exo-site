@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
-Disallow: /cart.html
-Disallow: /checkout.html
-Disallow: /order-confirmation.html
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /order-confirmation/
 
 Sitemap: https://9exo.com/sitemap.xml

@@ -1,7 +1,7 @@
-const CACHE_NAME = '9exo-cache-v1';
+const CACHE_NAME = '9exo-cache-v2';
 const PRECACHE_URLS = [
     '/',
-    '/products.html',
+    '/products/',
     '/assets/css/style.css',
     '/assets/fonts/fonts.css',
     '/assets/fonts/Inter-Variable.woff2',

@@ -7,18 +7,20 @@
 (function () {
     const CFG = window.CONFIG;
     const I = window.ICONS;
-    const path = window.location.pathname.replace(/\/index\.html$/, '/');
+    const path = window.location.pathname
+        .replace(/\/index\.html$/, '/')
+        .replace(/([^/])$/, '$1/');
 
     function isActive(href) {
-        if (href === '/') return path === '/' || path === '/index.html';
+        if (href === '/') return path === '/';
         return path.startsWith(href);
     }
 
     const NAV_LINKS = [
         { href: '/', label: 'Home' },
-        { href: '/products.html', label: 'Shop' },
-        { href: '/about.html', label: 'About Us' },
-        { href: '/contact.html', label: 'Contact Us' }
+        { href: '/products/', label: 'Shop' },
+        { href: '/about/', label: 'About Us' },
+        { href: '/contact/', label: 'Contact Us' }
     ];
 
     function navLinksHTML(cls) {
@@ -39,7 +41,7 @@
 
                 <div class="nav-icons">
                     <button class="btn-icon" id="search-open" aria-label="Search">${I.search}</button>
-                    <a href="/cart.html" class="btn-icon nav-icon-wrap" aria-label="Cart">
+                    <a href="/cart/" class="btn-icon nav-icon-wrap" aria-label="Cart">
                         ${I.bag}
                         <span class="cart-badge" style="display:none;">0</span>
                     </a>
@@ -91,22 +93,22 @@
                 <div>
                     <h4 class="footer-heading">Quick Links</h4>
                     <ul class="footer-links">
-                        <li><a href="/products.html">Shop All</a></li>
-                        <li><a href="/about.html">About Us</a></li>
-                        <li><a href="/contact.html">Contact</a></li>
-                        <li><a href="/faq.html">FAQ</a></li>
-                        <li><a href="/track-order.html">Track Order</a></li>
+                        <li><a href="/products/">Shop All</a></li>
+                        <li><a href="/about/">About Us</a></li>
+                        <li><a href="/contact/">Contact</a></li>
+                        <li><a href="/faq/">FAQ</a></li>
+                        <li><a href="/track-order/">Track Order</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="footer-heading">Policies</h4>
                     <ul class="footer-links">
-                        <li><a href="/delivery-terms.html">Delivery Terms</a></li>
-                        <li><a href="/refund-exchange.html">Refund &amp; Exchange</a></li>
-                        <li><a href="/size-chart.html">Size Chart</a></li>
-                        <li><a href="/care-instructions.html">Care Instructions</a></li>
-                        <li><a href="/privacy-policy.html">Privacy Policy</a></li>
-                        <li><a href="/terms-and-conditions.html">Terms &amp; Conditions</a></li>
+                        <li><a href="/delivery-terms/">Delivery Terms</a></li>
+                        <li><a href="/refund-exchange/">Refund &amp; Exchange</a></li>
+                        <li><a href="/size-chart/">Size Chart</a></li>
+                        <li><a href="/care-instructions/">Care Instructions</a></li>
+                        <li><a href="/privacy-policy/">Privacy Policy</a></li>
+                        <li><a href="/terms-and-conditions/">Terms &amp; Conditions</a></li>
                     </ul>
                 </div>
                 <div>
@@ -135,7 +137,7 @@
 
     function renderProductResult(p) {
         const price = `${CFG.currency} ${p.price}`;
-        return `<a class="search-result-item" href="/product.html?id=${p.id}">
+        return `<a class="search-result-item" href="/product/?id=${p.id}">
             <img src="${p.images[0]}" alt="${p.title}">
             <div>
                 <div style="font-weight:500;">${p.title}</div>
