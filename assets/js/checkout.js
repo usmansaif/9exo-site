@@ -30,70 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('summary-delivery').textContent = delivery === 0 ? 'Free' : window.formatPrice(delivery);
     document.getElementById('summary-total').textContent = window.formatPrice(total);
 
-    // Payment option selected styling
-    document.querySelectorAll('.payment-option').forEach(label => {
-        label.addEventListener('click', () => {
-            document.querySelectorAll('.payment-option').forEach(l => l.classList.remove('selected'));
-            label.classList.add('selected');
-        });
-    });
-
     const form = document.getElementById('checkout-form');
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-
-        const orderId = 'EXO' + Date.now().toString().slice(-8);
-
-        const name = document.getElementById('fullName').value;
-        const phone = document.getElementById('phone').value;
-        const whatsapp = document.getElementById('whatsapp').value;
-        const email = document.getElementById('email').value || 'N/A';
-        const address = document.getElementById('address').value;
-        const city = document.getElementById('city').value;
-        const area = document.getElementById('area').value;
-        const postal = document.getElementById('postal').value || 'N/A';
-        const payment = document.querySelector('input[name="payment"]:checked').value;
-        const notes = document.getElementById('notes').value || 'None';
-
-        let message = `New Order #${orderId}\n\n`;
-        message += `Customer Details\n------------------------\n`;
-        message += `Name: ${name}\n`;
-        message += `Phone: ${phone}\n`;
-        message += `WhatsApp: ${whatsapp}\n`;
-        message += `Email: ${email}\n\n`;
-
-        message += `Delivery Address\n------------------------\n`;
-        message += `City: ${city}\n`;
-        message += `Area: ${area}\n`;
-        message += `Address: ${address}\n`;
-        message += `Postal Code: ${postal}\n\n`;
-
-        message += `Products\n------------------------\n\n`;
-
-        cartItems.forEach((item, index) => {
-            message += `${index + 1}.\n`;
-            message += `Product: ${item.title}\n`;
-            message += `Size: ${item.size || 'N/A'}\n`;
-            message += `Colour: ${item.color || 'N/A'}\n`;
-            message += `Quantity: ${item.quantity}\n`;
-            message += `Price: ${window.formatPrice(item.price * item.quantity)}\n\n`;
-        });
-
-        message += `Subtotal: ${window.formatPrice(subtotal)}\n`;
-        message += `Delivery: ${delivery === 0 ? 'Free' : window.formatPrice(delivery)}\n`;
-        message += `Grand Total: ${window.formatPrice(total)}\n\n`;
-        message += `Payment Method: ${payment}\n\n`;
-        message += `Order Notes: ${notes}\n\n`;
-        message += `Thank you for shopping with ${window.CONFIG.brandName}.`;
-
-        const encodedMessage = encodeURIComponent(message);
-        const targetWhatsapp = window.CONFIG.contact.whatsapp.replace(/[^0-9]/g, '');
-        const whatsappUrl = `https://wa.me/${targetWhatsapp}?text=${encodedMessage}`;
-
-        sessionStorage.setItem('9exo_last_order', orderId);
-        window.app.clearCart();
-        window.open(whatsappUrl, '_blank');
-        window.location.href = '/order-confirmation/';
+        window.placeOrder(form);
     });
 });

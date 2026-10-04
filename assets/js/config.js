@@ -5,7 +5,7 @@ const CONFIG = {
         phone: "+92 310 7620999",
         whatsapp: "+923107620999",
         email: "9exo.clothing@gmail.com",
-        address: "123 Fashion Avenue, Lahore, Pakistan",
+        address: "13 Kareem Block, Lahore.",
         businessHours: "Monday - Saturday: 10:00 AM - 8:00 PM"
     },
     currency: "Rs.",

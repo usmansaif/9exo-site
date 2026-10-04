@@ -41,7 +41,7 @@
 
                 <div class="nav-icons">
                     <button class="btn-icon" id="search-open" aria-label="Search">${I.search}</button>
-                    <a href="/cart/" class="btn-icon nav-icon-wrap" aria-label="Cart">
+                    <a href="/cart/" id="cart-open" class="btn-icon nav-icon-wrap" aria-label="Cart">
                         ${I.bag}
                         <span class="cart-badge" style="display:none;">0</span>
                     </a>
@@ -125,9 +125,6 @@
                 <p>&copy; ${new Date().getFullYear()} 9exo. All rights reserved.</p>
                 <div class="payment-badges">
                     <span>Cash on Delivery</span>
-                    <span>Bank Transfer</span>
-                    <span>EasyPaisa</span>
-                    <span>JazzCash</span>
                 </div>
             </div>
         </footer>

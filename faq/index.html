@@ -55,7 +55,7 @@
           "priceRange": "Rs. 1500 - Rs. 6000",
           "address": {
             "@type": "PostalAddress",
-            "streetAddress": "123 Fashion Avenue",
+            "streetAddress": "13 Kareem Block",
             "addressLocality": "Lahore",
             "addressRegion": "Punjab",
             "addressCountry": "PK"
@@ -122,7 +122,7 @@
               "name": "What payment methods do you accept?",
               "acceptedAnswer": {
                 "@type": "Answer",
-                "text": "We accept Cash on Delivery, Bank Transfer, EasyPaisa and JazzCash. You can choose your preferred method at checkout."
+                "text": "We accept Cash on Delivery only. Pay in cash when your order arrives."
               }
             },
             {
@@ -232,7 +232,7 @@
             </div>
             <div class="accordion-item">
                 <button class="accordion-trigger">What payment methods do you accept?<span class="acc-icon"></span></button>
-                <div class="accordion-panel"><div class="accordion-panel-inner">We accept Cash on Delivery, Bank Transfer, EasyPaisa and JazzCash. You can choose your preferred method at checkout.</div></div>
+                <div class="accordion-panel"><div class="accordion-panel-inner">We accept Cash on Delivery only. Pay in cash when your order arrives.</div></div>
             </div>
             <div class="accordion-item">
                 <button class="accordion-trigger">Is Cash on Delivery available everywhere?<span class="acc-icon"></span></button>
@@ -284,6 +284,7 @@
 <script src="/assets/js/icons.js"></script>
 <script src="/assets/js/partials.js"></script>
 <script src="/assets/js/main.js"></script>
+<script src="/assets/js/cart-drawer.js"></script>
 <script>
     document.querySelectorAll('.acc-icon').forEach(s => s.innerHTML = window.ICONS.plus);
     window.initAccordions();

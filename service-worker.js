@@ -1,4 +1,4 @@
-const CACHE_NAME = '9exo-cache-v3';
+const CACHE_NAME = '9exo-cache-v4';
 const PRECACHE_URLS = [
     '/',
     '/products/',
@@ -11,6 +11,7 @@ const PRECACHE_URLS = [
     '/assets/js/icons.js',
     '/assets/js/partials.js',
     '/assets/js/main.js',
+    '/assets/js/cart-drawer.js',
     '/assets/js/products.js',
     '/assets/data/products.json',
     '/assets/images/black-logo.png',
