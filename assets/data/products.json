@@ -47,7 +47,7 @@
         "featured": false,
         "best_seller": false,
         "new": true,
-        "images": ["/assets/images/placeholder-cotton-pants-2.jpg", "/assets/images/placeholder-cotton-pants.jpg"]
+        "images": ["/assets/images/chino-pants-sand.jpg", "/assets/images/placeholder-cotton-pants.jpg"]
     },
     {
         "id": "3",
@@ -197,7 +197,7 @@
         "featured": true,
         "best_seller": true,
         "new": true,
-        "images": ["/assets/images/placeholder-6-pocket.jpg", "/assets/images/placeholder-6-pocket-2.jpg"]
+        "images": ["/assets/images/cargo-pants-olive.jpg", "/assets/images/placeholder-6-pocket-2.jpg"]
     },
     {
         "id": "9",
@@ -222,7 +222,7 @@
         "featured": false,
         "best_seller": false,
         "new": false,
-        "images": ["/assets/images/placeholder-6-pocket-2.jpg", "/assets/images/placeholder-6-pocket.jpg"]
+        "images": ["/assets/images/cargo-pants-olive.jpg", "/assets/images/placeholder-6-pocket.jpg"]
     },
     {
         "id": "10",
